@@ -1,5 +1,5 @@
 use ocl::{ProQue, Result}; // ocl is the Rsut crate for opencl, ProQue is a helper that combines an openCL program, queue and context
-use std::time::{Instant, Duration}; // Import for timing measurements
+use std::time::{Instant}; // Import for timing measurements
 
 fn main() -> Result<()> {
     // Start overall timing
