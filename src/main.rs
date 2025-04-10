@@ -1,5 +1,5 @@
 use ocl::{ProQue, Result}; // ocl is the Rsut crate for opencl, ProQue is a helper that combines an openCL program, queue and context
-use std::time::{Instant}; // Import for timing measurements
+use std::time::Instant; // Import for timing measurements
 
 fn main() -> Result<()> {
     // Start overall timing
@@ -13,9 +13,12 @@ fn main() -> Result<()> {
             __global float* c
         ) {
             int i = get_global_id(0);
-            c[i] = a[i] + b[i]; 
+            c[i] = a[i] * b[i]; 
         }
     "#;
+
+    // Defining an openCL kernel for 2D array multiplication
+    
 
     // Setting up openCL,  computation pipeline
     let setup_start = Instant::now();
@@ -67,7 +70,7 @@ fn main() -> Result<()> {
 
     // Verify output
     for &c in &c_data {
-        assert_eq!(c, 3.0f32);
+        assert_eq!(c, 2.0f32);
     }
 
     // Log total time
